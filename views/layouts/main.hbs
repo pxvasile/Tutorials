@@ -2,7 +2,7 @@
 
   <head>
     <meta charset="UTF-8" />
-    <title>{{title}}</title>
+    <title>JS Back-End - Exam - November 2020</title>
     <link href="../static/css/site.css" type="text/css" rel="stylesheet" />
     <link
       rel="stylesheet"
@@ -19,28 +19,35 @@
 
         <ul class="navbar-nav ml-auto">
 
-          <li class="nav-item">
-            <a class="nav-link" href="#">Welcome, {{username}}</a>
-          </li>
+          {{#if username}}
+            <li class="nav-item">
+              <a class="nav-link" href="#">Welcome, {{username}}</a>
+            </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="#">Logout</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Logout</a>
+            </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="#">Login</a>
-          </li>
+          {{else}}
+            <li class="nav-item">
+              <a class="nav-link" href="#">Login</a>
+            </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="#">Register</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Register</a>
+            </li>
+          {{/if}}
 
         </ul>
       </nav>
 
+      {{#if errors}}
       <section class="notifications">
-        <p class="notification-message">Message...</p>
+        {{#each error}}
+        <p class="notification-message">{{this}}</p>
+        {{/each}}
       </section>
+      {{/if}}
 
       <main>
         {{{body}}}

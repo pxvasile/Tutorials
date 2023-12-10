@@ -5,7 +5,6 @@ const { login } = require('../services/userService');
 const authController = require('express').Router();
 
 authController.get('/register', (req, res) => {
-    //TODO replace with actual view by assignment
     res.render('register', {
         title: 'Register Page'
     });
@@ -21,14 +20,11 @@ authController.post('/register', async (req, res) => {
         }
         const token = await register(req.body.username, req.body.password);
 
-        //TODO check assignment to see if register creates session
         res.cookie('token', token);
-        res.redirect('/'); //TODO replace with redirect by assignment - трябва да се види как е по задание
+        res.redirect('/'); 
     } catch (error) {
-        //TODO add error parser
         const errors = parseError(error);
 
-        //TODO add error display to actual template from assignment
         res.render('register', {
             title: 'Register Page',
             errors,
