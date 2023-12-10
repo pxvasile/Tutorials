@@ -7,7 +7,7 @@ const JWT_SECRET = 'q390ffdsfsfsfsaefvfgsa';
 async function register(username, password) {
     const existing = await User.findOne({ username }).collation({ locale: 'en', strength: 2 });
     if (existing) {
-        throw new Error('Username is taken'); // тук няма валидация, това което трябва да проверим е дали това име вече не съществува
+        throw new Error('Username is taken');
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -15,7 +15,7 @@ async function register(username, password) {
     const user = await User.create({
         username,
         hashedPassword
-    }); // трябва да се погледне в заданието дали регистрацията логва потребителя или ние ще го накараме да се логне ръчно
+    });
 
     return createSession(user);
 } 
