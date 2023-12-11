@@ -1,11 +1,12 @@
 const authController = require("../controllers/authController");
 const homeController = require("../controllers/homeController");
 const courseController = require("../controllers/courseController");
+const { hasUser, isGuest } = require("../controllers/guards");
 
 module.exports = (app) => {
     app.use('/', homeController);
     app.use('/auth', authController);
-    app.use('/course', courseController);
+    app.use('/course', hasUser(), courseController);
 
     /* Глобален error Handling - не ни трябва
     app.get('/error', (req, res, next) => {
