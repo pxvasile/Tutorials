@@ -1,6 +1,6 @@
 function parseError(error) {
     if (error.name == "ValidationError") {
-        return Object.values(error.errors).map(value => value.message);
+        return Object.values(error.errors).map(value => value.message); // връщаме масив от стрингове
     } else if (Array.isArray(error)) {
         return error.map(x => x.msg);
     } else {

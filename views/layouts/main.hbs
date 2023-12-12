@@ -44,7 +44,8 @@
       {{#if errors}}
         <section class="notifications">
           {{#each errors}}
-            <p class="notification-message">{{this}}</p>
+            <p class="notification-message">{{this}}</p> 
+            {{!-- тъй като е масив от стрингове слагаме this --}}
           {{/each}}
         </section>
       {{/if}}

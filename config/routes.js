@@ -1,7 +1,7 @@
 const authController = require("../controllers/authController");
 const homeController = require("../controllers/homeController");
 const courseController = require("../controllers/courseController");
-const { hasUser, isGuest } = require("../controllers/guards");
+const { hasUser } = require("../controllers/guards");
 
 module.exports = (app) => {
     app.use('/', homeController);
